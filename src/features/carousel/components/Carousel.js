@@ -7,6 +7,7 @@ import {
   Pressable,
   Text,
 } from 'react-native';
+import * as SecureStore from 'expo-secure-store';
 
 import CarouselItem from './CarouselItem';
 
@@ -15,14 +16,32 @@ const height = width * 100 / 50;
 
 const Carousel = ({ images }) => {
   const [activeImage, setActiveImage] = useState(0);
-  const [location, setLocation] = useState({x: 0, y: 0});
+  const [location, setLocation] = useState(null);
+  const [init, setInit] = useState(false);
 
   useEffect(() => {
-    console.log('location', location);
-    // TODO
-    console.log('width', width * activeImage );
-    console.log('activeImage', activeImage );
+    if (location) {
+      saveLastImage();
+    }
   }, [location]);
+
+  useEffect(() => {
+    if (!init) {
+      getLastImage();
+    }
+  }, [init]);
+
+  const getLastImage = async () => {
+    setInit(true);
+    const lasLocation = await SecureStore.getItemAsync('lastImage');
+    if (lasLocation) {
+      setLocation(JSON.parse(lasLocation));
+    }
+  }
+
+  const saveLastImage = async () => {
+    await SecureStore.setItemAsync('lastImage', JSON.stringify(location));
+  }
 
   const handleChangeActiveImage = (e) => {
     const slide = Math.ceil(e.nativeEvent.contentOffset.x / e.nativeEvent.layoutMeasurement.width);
