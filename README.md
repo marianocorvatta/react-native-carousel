@@ -10,3 +10,6 @@
 ## IOS
 
 ![](ios.gif)
+## ANDROID
+
+![](android.gif)
