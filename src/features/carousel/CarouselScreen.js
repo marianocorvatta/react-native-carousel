@@ -50,7 +50,6 @@ const CarouselScreen = () => {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-start',
     backgroundColor: '#2E4053',
   },
   loadingContainer: {

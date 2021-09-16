@@ -1,34 +1,27 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   StyleSheet,
-  View,
-  ImageBackground,
-  Text,
   Image,
+  Dimensions,
 } from 'react-native';
 
-const CarouselItem = ({ item, width, height }) => {
+const { width } = Dimensions.get('window');
+
+const CarouselItem = ({ item }) => {
   return (
     <Image
       source={{ uri: item.image }}
-      style={{ width, height, resizeMode: 'contain' }}
+      style={style.image}
     />
   );
 };
 
-const styles = StyleSheet.create({
-  carouselItem: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 200,
-    marginHorizontal: 24,
-    width: '1000%'
-  },
+const style = StyleSheet.create({
   image: {
-    width: '100%',
-    height: 300,
-    resizeMode: 'contain'
-  },
+    width: width,
+    height: 250,
+    resizeMode: 'stretch'
+  }
 });
 
 export default CarouselItem;
