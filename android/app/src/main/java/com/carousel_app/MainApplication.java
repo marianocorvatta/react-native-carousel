@@ -1,6 +1,5 @@
 package com.carousel_app;
-// com.myapp should be your package name
-import com.myapp.generated.BasePackageList;
+import com.carousel_app.generated.BasePackageList;
 
 import android.app.Application;
 import android.content.Context;
