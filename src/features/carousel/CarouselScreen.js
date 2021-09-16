@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import {
-  StyleSheet,
   SafeAreaView,
   View,
   Text,
@@ -10,6 +9,7 @@ import {
 import { getImages } from '../../services/index';
 
 import Carousel from './components/Carousel';
+import { carouselScreenStyle } from './styles/index';
 
 const CarouselScreen = () => {
   const [images, setImages] = useState([]);
@@ -35,31 +35,16 @@ const CarouselScreen = () => {
   };
 
   return (
-    <SafeAreaView style={style.container}>
+    <SafeAreaView style={carouselScreenStyle.container}>
       <StatusBar barStyle={'light-content'} />
       {isLoading && (
-        <View style={style.loadingContainer}>
-          <Text style={style.loading}>Loading...</Text>
+        <View style={carouselScreenStyle.loadingContainer}>
+          <Text style={carouselScreenStyle.loading}>Loading...</Text>
         </View>
       )}
       {!isLoading && <Carousel images={images} />}
     </SafeAreaView>
   );
 };
-
-const style = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#2E4053',
-  },
-  loadingContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  loading: {
-    color: '#fff'
-  }
-});
 
 export default CarouselScreen;
