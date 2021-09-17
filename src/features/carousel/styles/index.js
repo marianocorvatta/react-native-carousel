@@ -1,7 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 const { width } = Dimensions.get('window');
-const height = width * 100 / 50;
+const ITEM_SIZE = width * 0.72;
 
 export const carouselScreenStyle = StyleSheet.create({
   container: {
@@ -20,16 +20,26 @@ export const carouselScreenStyle = StyleSheet.create({
 
 export const carouselStyle = StyleSheet.create({
   container: {
-    marginTop: height / 4,
+    flex: 1
   },
-  scroll: {
-    width, 
-    height: 250,
+  flatListContainer: {
+    alignItems: 'center'
   },
   btnContainer: { 
     flexDirection: 'row',
     alignSelf: 'center',
     marginTop: 24,
+  },
+  imageContainer: {
+    marginHorizontal: 15,
+    alignItems: 'center',
+    borderRadius: 34,
+  },
+  image: {
+    width: '100%',
+    height: ITEM_SIZE,
+    resizeMode: 'cover',
+    borderRadius: 24,
   },
   nextBtn: {
     backgroundColor: '#161616',
@@ -53,12 +63,4 @@ export const carouselStyle = StyleSheet.create({
     borderRadius: 12,
     margin: 8,
   }
-});
-
-export const carouselItemStyle = StyleSheet.create({
-  image: {
-    width,
-    height: 250,
-    resizeMode: 'stretch'
-  },
 });
