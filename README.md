@@ -1,4 +1,4 @@
-# carousel_app
+# react-native-carousel
 ## Quick start
 
 - Install dependencies: `npm install` or `yarn`
